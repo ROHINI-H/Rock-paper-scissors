@@ -4,16 +4,32 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let input = prompt('Choose one of number: Rock(1), paper(2), or Scissors(3)', 0);
-    if(input <= 3 && input >= 1) {
-        return input;
-    } else {
-        alert('Enter the valid input');
-    }
+    let input = prompt('Choose one: Rock, paper, or Scissors', 'Rock');
+    return input;
 }
-
-console.log(getComputerChoice());
-console.log(getHumanChoice())
 
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    console.log("human: " + humanChoice);
+    console.log("Computer: " + computerChoice);
+    if(humanChoice.toLowerCase() == 'rock' && computerChoice.toLowerCase() == 'paper') {
+        console.log("You lose! Paper beats Rock");
+        computerScore++;
+    } else if(humanChoice.toLowerCase() == 'paper' && computerChoice.toLowerCase() == 'scissors') {
+        console.log("You lose! Scissors beats Paper");
+        computerScore++;
+    } else if(humanChoice.toLowerCase() == 'scissors' && computerChoice.toLowerCase() == 'rock') {
+        console.log("You lose! Rock beats Scissors");
+        computerScore++;
+    } else if(humanChoice.toLowerCase() == computerChoice.toLowerCase()) {
+        console.log("Draw!");
+    } else {
+        humanScore++;
+    }
+}
+
+playRound(getHumanChoice(), getComputerChoice());
+console.log("Your Score: " + humanScore);
+console.log("Computer Score: " + computerScore);
